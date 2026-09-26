@@ -123,7 +123,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </AosProvider>
 
         <Analytics />
-        <SpeedInsights/>
+        <SpeedInsights />
       </body>
     </html>
   );
