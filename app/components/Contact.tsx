@@ -1,37 +1,57 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Forminit } from 'forminit';
+import { Turnstile, type TurnstileInstance } from '@marsidev/react-turnstile';
 
 import ShineBorder from '@/components/ui/ShineBorder';
 import ShinyText from '@/components/ui/ShinyText';
 import Title from '@/components/ui/Title';
+import {
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+} from '@heroicons/react/24/outline';
 
 const forminit = new Forminit();
-const FORM_ID = '5s8pxjnrwqh';
+const FORM_ID = process.env.NEXT_PUBLIC_FORMINIT_FORM_ID as string;
 
 export default function Contact() {
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
+  const [turnstileToken, setTurnstileToken] = useState<string>('');
+
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (!turnstileToken) {
+      setStatus('error');
+      return;
+    }
 
     setStatus('loading');
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    const { error } = await forminit.submit(FORM_ID, formData);
+    formData.set('cf-turnstile-response', turnstileToken);
 
-    if (error) {
-      setStatus('error');
-      return;
+    try {
+      const { error } = await forminit.submit(FORM_ID, formData);
+
+      if (error) {
+        setStatus('error');
+        return;
+      }
+
+      setStatus('success');
+      form.reset();
+    } finally {
+      setTurnstileToken('');
+      turnstileRef.current?.reset();
     }
-
-    setStatus('success');
-    form.reset();
   }
 
   const isLoading = status === 'loading';
@@ -113,12 +133,20 @@ export default function Contact() {
             ></textarea>
           </label>
 
-          <input type="hidden" name="_gotcha" className="hidden" />
+          <input type="hidden" name="honeypot" className="hidden" />
+
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            onSuccess={(token) => setTurnstileToken(token)}
+            onExpire={() => setTurnstileToken('')}
+            onError={() => setTurnstileToken('')}
+          />
 
           <button
             type="submit"
             className="btn bg-gradient rounded-xl"
-            disabled={isLoading}
+            disabled={isLoading || !turnstileToken}
           >
             {isLoading && <span className="loading loading-spinner" />}
 
@@ -126,13 +154,15 @@ export default function Contact() {
           </button>
 
           {status === 'success' && (
-            <p className="text-success bg-success border border-success rounded-lg">
+            <p className="text-white text-center p-4 bg-success border border-gradient rounded-lg">
+              <CheckCircleIcon className="inline-block mr-2 size-6" />
               Message sent successfully!
             </p>
           )}
 
           {status === 'error' && (
-            <p className="text-error bg-error border border-error rounded-lg">
+            <p className="text-white text-center p-4 bg-error border border-gradient rounded-lg">
+              <ExclamationCircleIcon className="inline-block mr-2 size-6" />
               Something went wrong. Please try again.
             </p>
           )}
