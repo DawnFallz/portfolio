@@ -10,7 +10,7 @@ interface Stat {
 
 const stats: Stat[] = [
   {
-    num: 1,
+    num: 2,
     text: 'Years of Coding Experience',
     description:
       'A year of turning ideas into clean, functional digital experiences.',
@@ -22,13 +22,13 @@ const stats: Stat[] = [
       'From concepts to polished builds, bringing ideas to life through code.',
   },
   {
-    num: 20,
+    num: 30,
     text: 'Technologies Learnt',
     description:
       'Continuously exploring modern tools, frameworks, and technologies.',
   },
   {
-    num: 100,
+    num: 1000,
     text: 'Hours of Coding',
     description:
       'Countless hours spent building, experimenting, debugging, and learning.',
