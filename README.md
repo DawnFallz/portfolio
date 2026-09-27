@@ -104,6 +104,27 @@ Make sure you have the following installed:
 - [Node.js](https://nodejs.org/)
 - [pnpm](https://pnpm.io/)
 
+### Environment Variables
+
+Create a local environment file from the provided example:
+
+```bash
+cp .env.example .env.local
+```
+
+Then configure the required variables:
+
+```env
+# Cloudfare Turnstile Site Key
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+
+# Forminit Form ID
+NEXT_PUBLIC_FORMINIT_FORM_ID=
+
+# The Site URL
+SITE_URL=
+```
+
 ### Installation
 
 Clone the repository:
@@ -119,12 +140,18 @@ Install dependencies:
 pnpm install
 ```
 
-### Development
+### 🏗️ Production Build
 
-Start the development server:
+Build the portfolio:
 
 ```bash
-pnpm dev
+pnpm build
+```
+
+Start the server:
+
+```bash
+pnpm start
 ```
 
 Then open:
@@ -147,8 +174,7 @@ Where appropriate, components use responsive alternatives or reduced visual comp
 
 ## 🚀 Deployment
 
-This portfolio is deployed on [Vercel](https://vercel.com/).
-**Live website:** [https://dawnfallz.vercel.app](https://dawnfallz.vercel.app)
+This portfolio is deployed on [Vercel](https://vercel.com/). **Live website:** [https://dawnfallz.vercel.app](https://dawnfallz.vercel.app)
 
 ---
 
