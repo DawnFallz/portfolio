@@ -14,6 +14,12 @@ import "./globals.css";
 import DevTools from "@/components/dev/DevTools";
 import AosProvider from "@/providers/AosProvider";
 
+const siteUrl = process.env.SITE_URL;
+
+if (!siteUrl) {
+  throw new Error('SITE_URL environment variable is required.');
+}
+
 /* Fonts */
 const montenegrinGothicOne = Montenegrin_Gothic_One({
   variable: "--font-mont",
@@ -40,7 +46,7 @@ const lora = Lora({
 
 /* Metadata */
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL),
+  metadataBase: new URL(siteUrl),
 
   title: {
     default: "DawnFallz Portfolio",
@@ -74,7 +80,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DawnFallz Portfolio",
     description: "A full-stack developer passionate about web development, backend systems, and modern technologies.",
-    url: process.env.SITE_URL,
+    url: siteUrl,
     siteName: "DawnFallz Portfolio",
     type: "website",
     images: [
