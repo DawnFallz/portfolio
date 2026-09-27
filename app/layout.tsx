@@ -40,7 +40,7 @@ const lora = Lora({
 
 /* Metadata */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dawnfallz.vercel.app"),
+  metadataBase: new URL(process.env.SITE_URL),
 
   title: {
     default: "DawnFallz Portfolio",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DawnFallz Portfolio",
     description: "A full-stack developer passionate about web development, backend systems, and modern technologies.",
-    url: "https://dawnfallz.vercel.app",
+    url: process.env.SITE_URL,
     siteName: "DawnFallz Portfolio",
     type: "website",
     images: [
