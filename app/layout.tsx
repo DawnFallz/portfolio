@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
-import { 
+import type { Metadata } from 'next';
+import {
   Montenegrin_Gothic_One,
   Geist_Pixel,
-  Roboto_Slab, 
-  Lora
-} from "next/font/google";
+  Roboto_Slab,
+  Lora,
+} from 'next/font/google';
 
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import "./globals.css";
+import './globals.css';
 
-import DevTools from "@/components/dev/DevTools";
-import AosProvider from "@/providers/AosProvider";
+import DevTools from '@/components/dev/DevTools';
+import AosProvider from '@/providers/AosProvider';
 
 const siteUrl = process.env.SITE_URL;
 
@@ -22,26 +22,26 @@ if (!siteUrl) {
 
 /* Fonts */
 const montenegrinGothicOne = Montenegrin_Gothic_One({
-  variable: "--font-mont",
-  weight: "400",
-  subsets: ["latin"],
+  variable: '--font-mont',
+  weight: '400',
+  subsets: ['latin'],
   adjustFontFallback: false,
 });
 
 const geistPixel = Geist_Pixel({
-  variable: "--font-pixel",
-  subsets: ["latin"],
+  variable: '--font-pixel',
+  subsets: ['latin'],
   adjustFontFallback: false,
 });
 
 const robotoSlab = Roboto_Slab({
-  variable: "--font-roboto-slab",
-  subsets: ["latin"],
+  variable: '--font-roboto-slab',
+  subsets: ['latin'],
 });
 
 const lora = Lora({
-  variable: "--font-lora",
-  subsets: ["latin"],
+  variable: '--font-lora',
+  subsets: ['latin'],
 });
 
 /* Metadata */
@@ -49,28 +49,35 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: "DawnFallz Portfolio",
-    template: "%s | DawnFallz Portfolio",
+    default: 'DawnFallz Portfolio',
+    template: '%s | DawnFallz Portfolio',
   },
 
-  description: "A full-stack developer passionate about web development, backend systems, and modern technologies.",
+  description:
+    'A full-stack developer passionate about web development, backend systems, and modern technologies.',
 
-  applicationName: "DawnFallz Portfolio",
+  applicationName: 'DawnFallz Portfolio',
 
   icons: {
     icon: [
-      { url: "/favicons/favicon-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/favicons/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+      {
+        url: '/favicons/favicon-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/favicons/favicon-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
     ],
-    apple: [
-      { url: "/favicons/favicon-192x192.png", sizes: "192x192" },
-    ],
+    apple: [{ url: '/favicons/favicon-192x192.png', sizes: '192x192' }],
   },
 
   appleWebApp: {
     capable: true,
-    statusBarStyle: "black-translucent",
-    title: "DawnFallz Portfolio",
+    statusBarStyle: 'black-translucent',
+    title: 'DawnFallz Portfolio',
   },
 
   formatDetection: {
@@ -78,30 +85,36 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "DawnFallz Portfolio",
-    description: "A full-stack developer passionate about web development, backend systems, and modern technologies.",
+    title: 'DawnFallz Portfolio',
+    description:
+      'A full-stack developer passionate about web development, backend systems, and modern technologies.',
     url: siteUrl,
-    siteName: "DawnFallz Portfolio",
-    type: "website",
+    siteName: 'DawnFallz Portfolio',
+    type: 'website',
     images: [
       {
-        url: "/favicons/favicon.png",
+        url: '/favicons/favicon.png',
         width: 1200,
         height: 630,
-        alt: "DawnFallz Portfolio",
+        alt: 'DawnFallz Portfolio',
       },
     ],
   },
 
   twitter: {
-    card: "summary_large_image",
-    title: "DawnFallz Portfolio",
-    description: "A full-stack developer passionate about web development, backend systems, and modern technologies.",
-    images: ["/favicons/favicon.png"],
+    card: 'summary_large_image',
+    title: 'DawnFallz Portfolio',
+    description:
+      'A full-stack developer passionate about web development, backend systems, and modern technologies.',
+    images: ['/favicons/favicon.png'],
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="en"
@@ -115,7 +128,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         scroll-pt-10 sidebar-scroll
       `}
     >
-      <body 
+      <body
         className="
           flex flex-col
           bg-background text-foreground 
@@ -124,9 +137,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       >
         <DevTools />
 
-        <AosProvider>
-          {children}
-        </AosProvider>
+        <AosProvider>{children}</AosProvider>
 
         <Analytics />
         <SpeedInsights />
