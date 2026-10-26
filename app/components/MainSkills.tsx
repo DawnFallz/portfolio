@@ -56,7 +56,7 @@ function Model({ icon }: { icon: string }) {
   const { scene } = useGLTF(icon);
 
   return (
-    <Float floatIntensity={4} speed={2} rotationIntensity={1}>
+    <Float floatIntensity={3.8} speed={1.8} rotationIntensity={1}>
       <Clone object={scene} scale={5} />
     </Float>
   );
@@ -98,7 +98,7 @@ export default function MainSkills() {
               <div className="w-full h-48" data-aos="fade-up">
                 <Canvas
                   shadows
-                  dpr={[1, 2]}
+                  dpr={[1, 1.2]}
                   camera={{
                     position: [0, 0, 10],
                     fov: 50,

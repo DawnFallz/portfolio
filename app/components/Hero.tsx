@@ -54,11 +54,11 @@ function Model() {
         castShadow
         shadow-mapSize={1024}
       />
-      <pointLight intensity={6} />
+      <pointLight intensity={5.8} />
       <primitive
         object={scene}
-        scale={isLargeScreen ? 2 : 1.05}
-        position={isLargeScreen ? [-1, -3, -2.2] : [-1, -3.25, -1.5]}
+        scale={isLargeScreen ? 2 : 0.8}
+        position={isLargeScreen ? [-1, -3, -2.2] : [-2, -2.2, -1.25]}
         rotation={[-0.01, -0.2, -0.1]}
       />
     </mesh>
@@ -189,7 +189,7 @@ export default function Hero() {
         <Canvas
           frameloop="demand"
           shadows
-          dpr={[1, 2]}
+          dpr={[1, 1.4]}
           camera={{
             position: [22, 5, 5],
             fov: 50,
