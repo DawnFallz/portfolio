@@ -19,6 +19,9 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+
+    // Ignore generated Basis Universal transcoder assets.
+    'public/basis/**',
   ]),
 ]);
 

@@ -5,8 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { useThree, Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
+import { KTX2Loader } from 'three-stdlib';
 
 import { motion, type Variants } from 'motion/react';
 
@@ -40,7 +41,21 @@ const buttonVariant: Variants = {
 };
 
 function Model() {
-  const { scene } = useGLTF('/models/gaming_desktop_pc.glb');
+  const { gl } = useThree();
+
+  const { scene } = useGLTF(
+    '/models/gaming_desktop_pc.glb',
+    true,
+    true,
+    (loader) => {
+      const ktx2Loader = new KTX2Loader()
+        .setTranscoderPath('/basis/')
+        .detectSupport(gl);
+
+      loader.setKTX2Loader(ktx2Loader);
+    },
+  );
+
   const isLargeScreen = useIsLargeScreen();
 
   return (
