@@ -12,63 +12,63 @@ const certificates: Certificate[] = [
   {
     title: 'SoloLearn - Introduction to HTML',
     href: 'https://www.sololearn.com/certificates/CC-J1LFRRZP',
-    image: '/images/certificates/sololearn-introduction-to-html.png',
+    image: '/images/certificates/sololearn-introduction-to-html.webp',
   },
   {
     title: 'SoloLearn - Introduction to CSS',
     href: 'https://www.sololearn.com/certificates/CC-ORZWELWE',
-    image: '/images/certificates/sololearn-introduction-to-css.png',
+    image: '/images/certificates/sololearn-introduction-to-css.webp',
   },
   {
     title: 'SoloLearn - Introduction to JavaScript',
     href: 'https://www.sololearn.com/certificates/CC-8BNQYYAY',
-    image: '/images/certificates/sololearn-introduction-to-javascript.png',
+    image: '/images/certificates/sololearn-introduction-to-javascript.webp',
   },
   {
     title: 'SoloLearn - JavaScript Intermediate',
     href: 'https://www.sololearn.com/certificates/CC-XDVXR1E8',
-    image: '/images/certificates/sololearn-javascript-intermediate.png',
+    image: '/images/certificates/sololearn-javascript-intermediate.webp',
   },
   {
     title: 'SoloLearn - Introduction to Python',
     href: 'https://www.sololearn.com/certificates/CC-2SID3OCX',
-    image: '/images/certificates/sololearn-introduction-to-python.png',
+    image: '/images/certificates/sololearn-introduction-to-python.webp',
   },
   {
     title: 'SoloLearn - Python Intermediate',
     href: 'https://www.sololearn.com/certificates/CC-EIBXZVYN',
-    image: '/images/certificates/sololearn-python-intermediate.png',
+    image: '/images/certificates/sololearn-python-intermediate.webp',
   },
   {
     title: 'SoloLearn - Python Developer',
     href: 'https://www.sololearn.com/certificates/CC-TNZ6AS7B',
-    image: '/images/certificates/sololearn-python-developer.png',
+    image: '/images/certificates/sololearn-python-developer.webp',
   },
   {
     title: 'SoloLearn - Introduction to Java',
     href: 'https://www.sololearn.com/certificates/CC-LE6LEKG2',
-    image: '/images/certificates/sololearn-introduction-to-java.png',
+    image: '/images/certificates/sololearn-introduction-to-java.webp',
   },
   {
     title: 'SoloLearn - Tech for Everyone',
     href: 'https://www.sololearn.com/certificates/CC-OEQ5XCHO',
-    image: '/images/certificates/sololearn-tech-for-everyone.png',
+    image: '/images/certificates/sololearn-tech-for-everyone.webp',
   },
   {
     title: 'SoloLearn - Prompt Engineering',
     href: 'https://www.sololearn.com/certificates/CC-GNBZIO7Z',
-    image: '/images/certificates/sololearn-prompt-engineering.png',
+    image: '/images/certificates/sololearn-prompt-engineering.webp',
   },
   {
     title: 'SoloLearn - SEO with AI',
     href: 'https://www.sololearn.com/certificates/CC-YKZXUI42',
-    image: '/images/certificates/sololearn-seo-with-ai.png',
+    image: '/images/certificates/sololearn-seo-with-ai.webp',
   },
   {
     title: 'freeCodeCamp - Legacy Responsive Web Design V8',
     href: 'https://freecodecamp.org/certification/dawnfallz/responsive-web-design',
     image:
-      '/images/certificates/freecodecamp-legacy-responsive-web-design-v8.png',
+      '/images/certificates/freecodecamp-legacy-responsive-web-design-v8.webp',
   },
 ];
 
