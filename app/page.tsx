@@ -188,6 +188,7 @@ export default function Home() {
 
           <div>
             <p className="text-xs text-center">Tools & technologies I use:</p>
+
             <LogoLoop
               logos={techLogos}
               speed={100}
@@ -206,7 +207,7 @@ export default function Home() {
           <TechStack />
         </PageContainer>
 
-        <div className="relative z-10">
+        <div className="relative z-10 overflow-clip">
           <LearningJourney />
         </div>
 

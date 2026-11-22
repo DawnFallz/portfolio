@@ -274,19 +274,38 @@ const LightTunnel: React.FC<LightTunnelProps> = ({
     const mesh = new Mesh(gl, { geometry, program });
     ctxMap.set(container, { renderer, program, mesh });
 
+    let previousWidth = 0;
+    let previousHeight = 0;
+    let resizeRaf = 0;
+
     const setSize = () => {
       const rect = container.getBoundingClientRect();
+
       const w = Math.max(1, Math.floor(rect.width));
       const h = Math.max(1, Math.floor(rect.height));
+
+      if (w === previousWidth && h === previousHeight) return;
+
+      previousWidth = w;
+      previousHeight = h;
+
       renderer.setSize(w, h);
+
       const res = (program.uniforms.iResolution as { value: Float32Array })
         .value;
+
       res[0] = gl.drawingBufferWidth;
       res[1] = gl.drawingBufferHeight;
+
       renderer.render({ scene: mesh });
     };
 
-    const ro = new ResizeObserver(setSize);
+    const ro = new ResizeObserver(() => {
+      cancelAnimationFrame(resizeRaf);
+
+      resizeRaf = requestAnimationFrame(setSize);
+    });
+
     ro.observe(container);
     setSize();
 
@@ -368,6 +387,7 @@ const LightTunnel: React.FC<LightTunnelProps> = ({
 
     return () => {
       tryStop();
+      cancelAnimationFrame(resizeRaf);
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibility);
