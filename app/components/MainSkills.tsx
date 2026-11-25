@@ -2,8 +2,14 @@
 
 import { Suspense } from 'react';
 
-import { Canvas } from '@react-three/fiber'; 
-import { OrbitControls, useGLTF, Clone, Float, Environment } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
+import {
+  OrbitControls,
+  useGLTF,
+  Clone,
+  Float,
+  Environment,
+} from '@react-three/drei';
 
 import ModelLoader from '@/components/ui/ModelLoader';
 
@@ -111,8 +117,11 @@ export default function MainSkills() {
                       maxPolarAngle={Math.PI / 2}
                       minPolarAngle={Math.PI / 2}
                     />
-                    <Environment preset="dawn" />
-                    
+                    <Environment
+                      files="/hdri/kiara_1_dawn_256.hdr"
+                      environmentIntensity={0.8}
+                    />
+
                     <Model icon={skill.icon} />
                   </Suspense>
                 </Canvas>
